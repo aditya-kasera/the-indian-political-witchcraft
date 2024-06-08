@@ -231,11 +231,237 @@ html{
 }
 
 
+/* -------------------------------------------------------- */
+
+Components /
+Diagonal Section
+
+
+default
+Info page
+
+HTML
+
+CSS
+View code
+
+Download
+default
+--flip-x
+--bg-img
+--bottom
+--top
 
 
 
 
 
+
+/* -------------------------------- 
+
+File#: _1_diagonal-section
+Title: Diagonal Section
+Descr: Section with diagonal edges
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+/* reset */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+* {
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: hsl(0, 0%, 100%);
+  font-family: system-ui, sans-serif;
+  color: hsl(230, 7%, 23%);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.4;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  color: hsl(230, 13%, 9%);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.5rem; /* 40px */
+}
+
+h2 {
+  font-size: 2.125rem; /* 34px */
+}
+
+h3 {
+  font-size: 1.75rem; /* 28px */
+}
+
+h4 {
+  font-size: 1.375rem; /* 22px */
+}
+
+ol, ul, menu {
+  list-style: none;
+}
+
+button, input, textarea, select {
+  background-color: transparent;
+  border-radius: 0;
+  color: inherit;
+  line-height: inherit;
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+textarea {
+  resize: vertical;
+  overflow: auto;
+  vertical-align: top;
+}
+
+a {
+  color: hsl(250, 84%, 54%);
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img, video, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* -------------------------------- 
+
+Component 
+
+-------------------------------- */
+
+:root {
+  --diagonal-section-offset: 50px;
+}
+
+.diagonal-section,
+.diagonal-section-top,
+.diagonal-section-bottom {
+  position: relative;
+  z-index: 1;
+  background-color: hsl(240, 4%, 90%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@supports ((-webkit-clip-path: inset(50%)) or (clip-path: inset(50%))) {
+  .diagonal-section, .diagonal-section-top.diagonal-section-bottom {
+    padding-top: calc(var(--diagonal-section-offset)/2);
+    padding-bottom: calc(var(--diagonal-section-offset)/2);
+    -webkit-clip-path: polygon(0% 0%, 100% var(--diagonal-section-offset), 100% 100%, 0% calc(100% - var(--diagonal-section-offset)));
+            clip-path: polygon(0% 0%, 100% var(--diagonal-section-offset), 100% 100%, 0% calc(100% - var(--diagonal-section-offset)));
+  }
+
+  .diagonal-section--flip-x {
+    -webkit-clip-path: polygon(0% var(--diagonal-section-offset), 100% 0%, 100% calc(100% - var(--diagonal-section-offset)), 0% 100%);
+            clip-path: polygon(0% var(--diagonal-section-offset), 100% 0%, 100% calc(100% - var(--diagonal-section-offset)), 0% 100%);
+  }
+
+  .diagonal-section-top {
+    padding-top: calc(var(--diagonal-section-offset)/2);
+    -webkit-clip-path: polygon(0% 0%, 100% var(--diagonal-section-offset), 100% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 100% var(--diagonal-section-offset), 100% 100%, 0% 100%);
+  }
+
+  .diagonal-section-top--flip-x {
+    -webkit-clip-path: polygon(0% var(--diagonal-section-offset), 100% 0%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% var(--diagonal-section-offset), 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .diagonal-section-top--flip-x.diagonal-section-bottom {
+    -webkit-clip-path: polygon(0% var(--diagonal-section-offset), 100% 0%, 100% 100%, 0% calc(100% - var(--diagonal-section-offset)));
+            clip-path: polygon(0% var(--diagonal-section-offset), 100% 0%, 100% 100%, 0% calc(100% - var(--diagonal-section-offset)));
+  }
+
+  .diagonal-section-bottom {
+    padding-bottom: calc(var(--diagonal-section-offset)/2);
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% calc(100% - var(--diagonal-section-offset)));
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% calc(100% - var(--diagonal-section-offset)));
+  }
+
+  .diagonal-section-bottom--flip-x {
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - var(--diagonal-section-offset)), 0% 100%);
+            clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - var(--diagonal-section-offset)), 0% 100%);
+  }
+
+  .diagonal-section-bottom--flip-x.diagonal-section-top {
+    -webkit-clip-path: polygon(0% 0%, 100% var(--diagonal-section-offset), 100% calc(100% - var(--diagonal-section-offset)), 0% 100%);
+            clip-path: polygon(0% 0%, 100% var(--diagonal-section-offset), 100% calc(100% - var(--diagonal-section-offset)), 0% 100%);
+  }
+
+  .diagonal-section-top--flip-x.diagonal-section-bottom--flip-x {
+    -webkit-clip-path: polygon(0% var(--diagonal-section-offset), 100% 0%, 100% calc(100% - var(--diagonal-section-offset)), 0% 100%);
+            clip-path: polygon(0% var(--diagonal-section-offset), 100% 0%, 100% calc(100% - var(--diagonal-section-offset)), 0% 100%);
+  }
+}
+
+/* -------------------------------- 
+
+Utilities 
+
+-------------------------------- */
+
+.cd-container {
+  width: calc(100% - 3rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cd-max-width-sm {
+  max-width: 48rem;
+}
+
+.cd-padding-y-3xl {
+  padding-top: 10.75rem;
+  padding-bottom: 10.75rem;
+}
+
+.cd-margin-bottom-sm {
+  margin-bottom: 1.5rem;
+}
+
+.cd-text-center {
+  text-align: center;
+}
+
+#navbar-logo {
+  height: 100%;
+  margin-right: 30px;
+  width: auto;
+  max-height: 50px; /* Adjust this value to match your navbar's height */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav_btn {
+  margin-right: 20px;
+}
 
 
 
